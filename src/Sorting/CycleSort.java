@@ -1,22 +1,24 @@
 package Sorting;
 
+import java.util.ArrayList;
+
 public class CycleSort {
     public static void main(String[] args) {
         int[] arr = {7, 8, 5, 6, 3, 9, 3, 7, -5,};
     }
 
-    int missingNumber(int[] arr){
+    int missingNumber(int[] arr) {
         int n = 1 + arr.length;
         int i = 0;
-        while(i< arr.length){
-            if(arr[i] == i+1 || arr[i]==n) i++;
-            else{
-                int idx = arr[i]-1;
+        while (i < arr.length) {
+            if (arr[i] == i + 1 || arr[i] == n) i++;
+            else {
+                int idx = arr[i] - 1;
                 swap(arr, i, idx);
             }
         }
-        for(i=0; i< arr.length; i++){
-            if(arr[i] != i+1) return i+1;
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i] != i + 1) return i + 1;
         }
         return n;
     }
@@ -29,13 +31,34 @@ public class CycleSort {
                 i++;
             } else {
                 int idx = arr[i] - 1;
-                if(arr[idx] == arr[i]){
+                if (arr[idx] == arr[i]) {
                     return arr[idx];
                 }
                 swap(arr, i, idx);
             }
         }
         return -1;
+    }
+
+    public ArrayList<Integer> findDuplicates(int[] arr) {
+        ArrayList<Integer> res = new ArrayList<>();
+        int n = arr.length;
+        int i = 0;
+        while (i < arr.length) {
+            int idx = arr[i] - 1;
+            if (arr[i] == i + 1 || arr[idx] == arr[i]) {
+                i++;
+            } else {
+                swap(arr, i, idx);
+            }
+        }
+
+        for (i = 0; i < n; i++) {
+            if (arr[i] != i + 1) {
+                res.add(arr[i]);
+            }
+        }
+        return res;
     }
 
     private void swap(int[] arr, int i, int idx) {

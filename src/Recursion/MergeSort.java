@@ -7,6 +7,7 @@ public class MergeSort {
         print(arr);
     }
 
+    // divide and conquer technique used in merge sort O(nlogn)
     private static void mergeSort(int[] arr) {
         int n = arr.length;
         if(n==1) return; // 1 length arr is always sorted
@@ -21,7 +22,7 @@ public class MergeSort {
         for (int i = 0; i < b.length; i++) {
             b[i] = arr[index++];
         }
-        // Step 3 : Magic on a and b
+        // Step 3 : Magic on a and b for the sorting
         mergeSort(a);
         mergeSort(b);
         // Step 4 : Merge a and b into arr
@@ -42,5 +43,27 @@ public class MergeSort {
         for (int ele : arr) {
             System.out.print(ele + " ");
         }
+    }
+
+    int missingNumber(int[] arr){
+        int n = 1 + arr.length;
+        int i = 0;
+        while(i< arr.length){
+            if(arr[i] == i+1 || arr[i]==n) i++;
+            else{
+                int idx = arr[i]-1;
+                swap(arr, i, idx);
+            }
+        }
+        for(i=0; i< arr.length; i++){
+            if(arr[i] != i+1) return i+1;
+        }
+        return n;
+    }
+
+    private void swap(int[] arr, int i, int idx) {
+        int temp = arr[idx];
+        arr[idx] = arr[i];
+        arr[i] = temp;
     }
 }

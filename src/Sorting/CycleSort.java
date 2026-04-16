@@ -1,6 +1,6 @@
 package Sorting;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class CycleSort {
     public static void main(String[] args) {
@@ -56,6 +56,27 @@ public class CycleSort {
         for (i = 0; i < n; i++) {
             if (arr[i] != i + 1) {
                 res.add(arr[i]);
+            }
+        }
+        return res;
+    }
+
+    public List<Integer> findDisappearedNumbers(int[] arr) {
+        List<Integer> res = new ArrayList<>();
+        int n = arr.length;
+        int i = 0;
+        while (i < arr.length) {
+            int idx = arr[i] - 1;
+            if (arr[i] == i + 1 || arr[idx] == arr[i]) {
+                i++;
+            } else {
+                swap(arr, i, idx);
+            }
+        }
+
+        for (i = 0; i < n; i++) {
+            if (arr[i] != i + 1) {
+                res.add(i+1);
             }
         }
         return res;

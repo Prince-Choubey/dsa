@@ -25,9 +25,13 @@ public class DisplayList {
         }
         System.out.println();
     }
-//    public static int get(Node head, int idx){
-//
-//    }
+    public static int get(Node head, int idx){
+        Node temp = head;
+        for(int i=0; i<=idx; i++){
+            temp = temp.next;
+        }
+        return temp.val;
+    }
     public static void main(String[] args) {
         Node a = new Node(10);
         Node b = new Node(20);

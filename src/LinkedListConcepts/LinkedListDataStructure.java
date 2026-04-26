@@ -31,6 +31,14 @@ class Linkedlist { // user defined data structure
         }
     }
 
+    void deleteAtHead(){
+        if(head == null) {
+            System.out.println("List is Empty");
+            return;
+        }
+        head = head.next;
+    }
+
     void display() {
         if (head == null) {
             return;
@@ -40,6 +48,7 @@ class Linkedlist { // user defined data structure
             System.out.print(temp.val + " ");
             temp = temp.next;
         }
+        System.out.println();
     }
 }
 
@@ -53,6 +62,8 @@ public class LinkedListDataStructure {
         ll.addAtTail(10);
         ll.addAtTail(10);
         ll.addAtHead(55);
+        ll.display();
+        ll.deleteAtHead();
         ll.display();
     }
 }

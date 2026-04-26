@@ -22,6 +22,15 @@ class Linkedlist { // user defined data structure
         }
     }
 
+    void addAtHead(int val){
+        Node temp = new Node(val);
+        if(head==null) head = tail = temp;
+        else {
+            temp.next = head;
+            head = temp;
+        }
+    }
+
     void display() {
         if (head == null) {
             return;
@@ -43,6 +52,7 @@ public class LinkedListDataStructure {
         ll.addAtTail(10);
         ll.addAtTail(10);
         ll.addAtTail(10);
+        ll.addAtHead(55);
         ll.display();
     }
 }
